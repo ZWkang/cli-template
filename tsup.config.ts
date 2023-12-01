@@ -1,12 +1,12 @@
-import { Options } from 'tsup';
+import type { Options } from 'tsup'
 
 const config: Options = {
   splitting: true,
   format: ['esm', 'cjs', 'iife'],
-  entryPoints: ['src/index.ts'],
+  entryPoints: ['src/cli.ts'],
   clean: true,
   dts: true,
   outDir: './dist',
-};
+}
 
-export default config;
+export default config
