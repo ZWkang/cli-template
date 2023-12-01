@@ -7,15 +7,64 @@ on:
     branches: [main]
 
 jobs:
-  Testing_changes:
+  typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set node
+        uses: actions/setup-node@v3
         with:
-          node-version: 14.17.0
-      - uses: pnpm/action-setup@v2.0.1
+          node-version: 16.x
+          cache: pnpm
+
+      - name: Setup
+        run: pnpm i
+
+      - name: Typecheck
+        run: pnpm run typecheck
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set node
+        uses: actions/setup-node@v3
         with:
-          version: 6.15.1
-      - run: pnpm i
-      - run: pnpm test
+          node-version: 16.x
+          cache: pnpm
+
+      - name: Setup
+        run: pnpm i
+
+      - name: Lint
+        run: pnpm lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: pnpm
+
+      - name: Setup
+        run: pnpm i
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: pnpm test

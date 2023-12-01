@@ -1,6 +1,7 @@
 {
   "name": "pkg-name",
   "version": "0.0.0",
+  "type": "module",
   "packageManager": "pnpm@7.33.6",
   "description": "> description:",
   "publishConfig": {
@@ -10,6 +11,9 @@
     "name": "zwkang",
     "email": "kang95630@gmail.com"
   },
+  "bin": {
+    "pkg-name": "bin/pkg-name.mjs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zwkang/pkg-name.git"
@@ -17,37 +21,22 @@
   "bugs": "https://github.com/zwkang/pkg-name/issues",
   "keywords": [],
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    }
-  },
-  "main": "./dist/index.js",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "tsup --watch",
     "lint": "eslint --cache .",
-    "test": "vitest run",
+    "test": "vitest",
     "build": "tsup",
     "start": "tsx src/index.ts",
-    "release": "npm publish",
+    "release": "pnpm publish",
     "bump:version": "bumpp",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm run build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.13.1",

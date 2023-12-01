@@ -1,4 +1,4 @@
-name: changelog
+name: Release
 
 on:
   push:
@@ -35,9 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Release
-        run: pnpm relese
-
       - run: npx changelogithub
         env:
-          GITHUB_TOKEN: ${{secrets.TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

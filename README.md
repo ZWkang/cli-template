@@ -9,6 +9,23 @@
 - Eslint + Prettier good format and format checker
 - TypeScript, of course!!
 
+## Usage
+
+```bash
+# dev
+pnpm dev
+
+# build
+pnpm build
+
+# publish
+pnpm bump:version && pnpm release
+
+# test
+pnpm test
+
+```
+
 ## Try it now
 
 ## copy usage remove this please !!
