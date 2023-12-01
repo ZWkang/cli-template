@@ -1,4 +1,4 @@
-name: Test project cases
+name: CI Process
 
 on:
   push:
